@@ -1,0 +1,78 @@
+1. True or false
+    a. 5n + 10n^2 = O(n^2)
+    b. n logn + 4n = O(n)
+    c. log(n^2 ) + 4 log(log n) = O(logn)
+    d. 12 n 1/2 + 3 = O(n 2 )
+    e. 3 n + 11 n 2 + n 20 = O(2n)
+   
+2. What is the best-case runtime complexity of searching an Array?
+
+3. What is the average-case runtime complexity of searching an Array?
+
+4. Given array of positive numbers, you need to find the maximum sum under
+   constraint that no two elements should be adjacent.
+   
+   
+   
+   Answers
+   -------
+   
+1.
+   a. False. 
+   The expression 5n + 10n^2 is not O(n^2) because the second term grows much faster than the first   one. In    fact, 5n + 10n^2 = O(n^2) implies that there exist constants c and n0 such that 5n + 10n^2 ≤ cn^2 for all n ≥ n0, which is not true.
+
+b. False. 
+        The expression n log n + 4n is not O(n) because the first term grows faster than the second one. In      fact, n log n + 4n = Ω(n log n) and Ω(n), which means that there exist constants c1, c2, and n0 such that c1n log n ≤ n log n + 4n ≤ c2n log n for all n ≥ n0, which is true.
+
+c. True. 
+    We can simplify the expression log(n^2) + 4log(log n) to 2log(n) + 4log(log n) = log(n^2) + log((log n)^4) = log(n^2(log n)^4) = log(n^2log^4n), which is O(log n) because it grows slower than log n.
+
+d. True. 
+       The expression 12n^(1/2) + 3 is O(n^2) because the square root term grows slower than n^2. In fact, there exist constants c and n0 such that 12n^(1/2) + 3 ≤ cn^2 for all n ≥ n0, which is true.
+
+e. True. 
+       The expression 3n + 11n^2 + n^20 is O(2^n) because the exponential term grows much faster than the polynomial terms. In fact, there exist constants c and n0 such that 3n + 11n^2 + n^20 ≤ c2^n for all n ≥ n0, which is true.
+       
+
+
+2. The best-case runtime complexity of searching an array depends on the search algorithm being used. There are different search algorithms with different best-case runtime complexities. Here are some examples:
+
+Linear search: In the best case, the element being searched for is found at the beginning of the array, so the runtime complexity is O(1).
+
+Binary search: In the best case, the element being searched for is at the middle of the array, so the runtime complexity is O(1).
+
+Hash table search: In the best case, the element being searched for is found at the first position of the corresponding hash bucket, so the runtime complexity is O(1).
+
+Note that these best-case runtime complexities are rare and not typical for most search scenarios. In general, the worst-case or average-case runtime complexities are more relevant for evaluating the efficiency of search algorithms.
+
+
+
+
+
+
+3. The average-case runtime complexity of searching an array depends on the search algorithm being used, the distribution of data in the array, and the size of the array. Here are some examples:
+
+Linear search: In the average case, the element being searched for is not found at the beginning of the array, so the algorithm needs to scan through a portion of the array. The average runtime complexity of linear search is O(n/2), which simplifies to O(n).
+
+Binary search: In the average case, the element being searched for is not at the middle of the array, so the algorithm needs to divide the array into two parts and recursively search one of them. The average runtime complexity of binary search is O(log n).
+
+Hash table search: In the average case, the element being searched for is found in one of the hash buckets, but not necessarily in the first position. The average runtime complexity of hash table search depends on the hash function used and the load factor of the hash table, but it is usually O(1) or O(log n) if the hash table is implemented as a balanced tree.
+
+Note that the average-case runtime complexities are more relevant than the best-case complexities for evaluating the efficiency of search algorithms, as the average case is more representative of typical search scenarios.
+
+
+
+
+
+4. This problem can be solved using dynamic programming. We can define an array DP such that DP[i] represents the maximum sum that can be obtained using elements up to index i and without including element i.
+
+The recurrence relation for DP can be defined as follows:
+
+DP[i] = max(DP[i-1], DP[i-2] + A[i]), where A is the input array.
+
+The first term in the max function represents the case where we exclude the current element i, and the second term represents the case where we include the current element i. If we include element i, we cannot include the previous element i-1, so we need to add the maximum sum up to i-2.
+
+The final solution will be the maximum of DP[N-1] (where N is the length of the array A) and DP[N-2], because the last element may or may not be included in the maximum sum.
+
+The time complexity of this algorithm is O(N), where N is the length of the input array A.
+
